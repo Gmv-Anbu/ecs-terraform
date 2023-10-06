@@ -14,9 +14,10 @@ resource "aws_lb_target_group" "target_group" {
   vpc_id      = module.vpc.vpc_id
   target_type = "ip"
 
-  health_check {
+    health_check {
     enabled             = true
     interval            = 30
+    path                = "/api/v1/healthCheck" # Specify the path here
     port                = "traffic-port"
     protocol            = "HTTP"
     healthy_threshold   = 3
